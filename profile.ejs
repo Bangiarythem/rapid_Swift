@@ -1,0 +1,62 @@
+<!-- views/profile.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="/stylesheets/profile.css">
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Profile</h1>
+    </div>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+        <!-- Flash Messages -->
+        <% if (messages.success_msg.length > 0) { %>
+            <div class="flash-message success">
+                <%= messages.success_msg %>
+            </div>
+        <% } %>
+        
+        <form action="/profile" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" value="<%= user.name %>" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" value="<%= user.email %>" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password (leave blank to keep current password)</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="form-group">
+                <button type="submit">Update Profile</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="floating-element" style="top: 10%; left: 10%;"></div>
+    <div class="floating-element" style="top: 50%; left: 70%;"></div>
+    <div class="floating-element" style="top: 80%; left: 30%;"></div>
+
+    <!-- Include JavaScript for notifications -->
+    <script>
+        // Display flash message and auto-hide it after 5 seconds
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const flashMessage = document.querySelector('.flash-message');
+            if (flashMessage) {
+                setTimeout(() => {
+                    flashMessage.style.opacity = 0;
+                }, 5000); // Adjust the delay as needed
+            }
+        });
+    </script>
+</body>
+</html>

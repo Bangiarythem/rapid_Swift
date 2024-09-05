@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <!-- Welcome Message -->
+    <div class="welcome-message">
+        <h2>Welcome to Rapid-Swift</h2>
+        <p>Your ride, your way. Quick, safe, and reliable.</p>
+    </div>
+
+    <div class="background-animation"></div>
+    
+    <!-- Main Container -->
+    <div class="container" onclick="window.location.href='/register';">
+        <h1>Rapid-Swift</h1>
+        <p>Click to Register</p>
+        <p class="tagline">Start your journey with us today!</p>
+        <button class="cta-button" onclick="window.location.href='/register';">Book Your Ride</button>
+        <div class="floating-element" style="top: 20%; left: 30%;"></div>
+        <div class="floating-element" style="top: 60%; right: 20%;"></div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-timer">
+        <p>Special Offer! Register within:</p>
+        <div id="timer"></div>
+    </div>
+
+    <!-- Additional Info Section -->
+    <div class="info-section">
+        <p>Why choose us?</p>
+        <ul>
+            <li>Quick and easy bookings</li>
+            <li>Safe and sanitized rides</li>
+            <li>Available 24/7 across the city</li>
+        </ul>
+    </div>
+
+    <!-- Footer Section with Customer Support -->
+    <div class="footer">
+        <p>Need Help? Contact our 24/7 support team at <a href="tel:+1234567890">+123 456 7890</a></p>
+    </div>
+
+    <script>
+        // Countdown Timer Script
+        const countdownDate = new Date().getTime() + 60 * 60 * 1000; // 1 hour countdown
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>

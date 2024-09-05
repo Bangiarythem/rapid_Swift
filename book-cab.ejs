@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Cab</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="/stylesheets/book-cab.css">
+<!-- Add this line for hamburger menu styling -->
+</head>
+<body>
+    <div class="header">
+        <h1>Rapid-Swift</h1>
+        <div class="hamburger-menu">
+            <button id="hamburgerBtn">&#9776;</button>
+            <div class="menu-content" id="menuContent">
+                <a href="/profile">Profile</a>
+                <a href="/register">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <!-- Booking Form Modal -->
+    <button id="openModalBtn">Book a Cab</button>
+    <div class="modal" id="bookingModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Book a Cab</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="destination">Enter your destination</label>
+                <input type="text" id="destination" placeholder="Where to?" autofocus>
+            </div>
+            <div class="form-group">
+                <label for="cabType">Choose Cab Type</label>
+                <select id="cabType">
+                    <option value="standard">Standard</option>
+                    <option value="premium">Premium</option>
+                    <option value="luxury">Luxury</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button id="calculateFareBtn">Calculate Fare</button>
+            </div>
+            <div class="fare-display" id="fareDisplay"></div>
+            <div class="cab-comparison" id="comparisonTable"></div>
+            <div class="form-group">
+                <button id="bookCabBtn">Book Cab</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div id="otpModal" class="modal">
+        <div class="modal-content">
+            <span id="closeOTPPopupBtn" class="close-btn">&times;</span>
+            <h2>Enter OTP</h2>
+            <input type="text" id="otpInput" placeholder="Enter OTP">
+            <button id="validateOTPBtn" class="btn">Validate OTP</button>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="/javascripts/book-cab.js"></script>
+</body>
+</html>
